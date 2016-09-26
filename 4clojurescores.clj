@@ -6,7 +6,11 @@
     (slurp (str url "/" username)))
 
 (defn find_score_text [username]
-    (re-find
-        #"<td class=\"count-value\">([0-9]+)/"
-        (download_page username)))
+    (last
+        (re-find
+            #"<td class=\"count-value\">([0-9]+)/"
+            (download_page username))))
+
+(defn find_longest_name [usernames]
+    (reduce max (map count usernames)))
 
