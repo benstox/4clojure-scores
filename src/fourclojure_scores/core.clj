@@ -1,6 +1,6 @@
-(def url "https://www.4clojure.com/user")
+(ns fourclojure-scores.core)
 
-(def friends '("benstox" "kevinmarsh3" "alexhenman" "eduardo_gomez" "val_camp"))
+(require [environ.core :refer [env]])
 
 (defn download_page [username]
     (slurp (str url "/" username)))
