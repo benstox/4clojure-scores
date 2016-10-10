@@ -1,6 +1,7 @@
-(ns fourclojure-scores.core)
+(ns fourclojure-scores.core
+    (require [environ.core :refer [env]]))
 
-(require [environ.core :refer [env]])
+(def url "https://www.4clojure.com/user")
 
 (defn download_page [username]
     (slurp (str url "/" username)))
@@ -40,3 +41,5 @@
                 (if (empty? the_rest)
                     nil
                     (recur (first the_rest) (rest the_rest)))))))
+
+(defn -main [] (display (env :friends)))
