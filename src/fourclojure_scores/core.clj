@@ -1,5 +1,6 @@
 (ns fourclojure-scores.core
-    (require [environ.core :refer [env]]))
+    (:require [environ.core :refer [env]])
+    (:require [clojure.string :as str]))
 
 (def url "https://www.4clojure.com/user")
 
@@ -42,4 +43,4 @@
                     nil
                     (recur (first the_rest) (rest the_rest)))))))
 
-(defn -main [] (display (env :friends)))
+(defn -main [] (display (str/split (env :friends) #",")))
